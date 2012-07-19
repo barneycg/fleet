@@ -1,0 +1,31 @@
+<HTML> 
+<HEAD> 
+<TITLE>Testpage 1</TITLE> 
+<SCRIPT LANGUAGE="JavaScript">
+function showfit (form) {
+    var TestVar = form.ship_dna.value;
+	CCPEVE.showFitting(TestVar);
+	alert (TestVar);
+}
+</SCRIPT>
+</HEAD> 
+<BODY>
+<form name="form1" method="GET" action="">
+	<table width="500" border="1" align="center" cellpadding="2" cellspacing="2">
+	  <tr>
+		<td><strong>Enter Ship DNA</strong></td>
+		<td> </td>
+	  </tr>
+	  <tr>
+		<td>Ship dna</td>
+		<td><input name="ship_dna" type="text" id="ship_dna"></td>
+	  </tr>
+	  <tr>
+		<td>
+		<INPUT TYPE="button" NAME="button" Value="Click" onClick="showfit(this.form)"></td>
+		<td> </td>
+	  </tr>
+	</table>
+</form>
+</BODY>
+</HTML>

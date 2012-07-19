@@ -1,0 +1,9 @@
+LAWN Fleet Tracker
+
+Requirements
+============
+mysql
+
+sql directory contains dump of the required db.
+
+sql connection details are set in ft.ini and example is given in ft_example.ini
