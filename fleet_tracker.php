@@ -52,7 +52,13 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'EVE-IGB'))
 	<? 
 	} 
 	} 
-} 
+}
+else
+{
+?>
+	<h3>This link only works in the IGB</h3>
+<?
+}
 ?> 
 </BODY> 
 </HTML> 
