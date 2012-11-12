@@ -55,23 +55,18 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'EVE-IGB'))
 			
 			if (($fleet_closed == 0) && ((($timestamp >= $fleet_start) && ($timestamp <= $fleet_end))||($fleet_start == "0000-00-00 00:00:00") ))
 			{
-				//$i->execute(array(':fleet_id'=>$fleet_id,':timestamp'=>$timestamp,':char_name'=>$char_name,':char_id'=>$char_id,':corp_name'=>$corp_name,':corp_id'=>$corp_id,':alliance_name'=>$alliance_name,':alliance_id'=>$alliance_id,':ship_type'=>$ship_type,':ship_type_id'=>$ship_type_id,':location'=>$location));
-
 				?> 
 				<b>Pilot:</b>
 				<? echo " [".$_SERVER["HTTP_EVE_CORPNAME"] ."] " .$_SERVER["HTTP_EVE_CHARNAME"]."<BR>"; ?> 
-				<b>Location:</b>
-				<? echo $_SERVER["HTTP_EVE_REGIONNAME"]; ?>/<?
-				echo $_SERVER["HTTP_EVE_CONSTELLATIONNAME"]; ?>/<?
-				echo $_SERVER["HTTP_EVE_SOLARSYSTEMNAME"]; ?><BR> 
+				<b>Location:</b> <? echo $_SERVER["HTTP_EVE_REGIONNAME"]; ?>/<? echo $_SERVER["HTTP_EVE_CONSTELLATIONNAME"]; ?>/<? echo $_SERVER["HTTP_EVE_SOLARSYSTEMNAME"]; ?><BR> 
 				<? 
-				if ($_SERVER["HTTP_EVE_STATIONNAME"] != "None") 
+				if (!empty($_SERVER["HTTP_EVE_STATIONNAME"])) 
 				{ 
 				?> 
 					<b>Station:</b> <? echo $_SERVER["HTTP_EVE_STATIONNAME"]; ?><br> 
 				<? 
+				}
 				echo "<b>Ship Type:</b> ".$ship_type."<BR><BR>";
-				
 				echo "You are about to join the fleet : <b>".$fleet_name."</b><br>";
 				echo "<b>Are you sure ?</b>";
 				echo "<input type=\"hidden\" name=\"fleet_id\" value=\"".$fleet_id."\"?";
@@ -86,8 +81,7 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'EVE-IGB'))
 				echo "<input type=\"hidden\" name=\"location\" value=\"".$location."\"?";
 				echo "<input type=\"hidden\" name=\"timestamp\" value=\"".$timestamp."\">";
 			
-				echo "&nbsp;&nbsp;<input type=\"submit\" name=\"Submit\" value=\"Yes\">";
-				} 
+				echo "&nbsp;&nbsp;<input type=\"submit\" name=\"Submit\" value=\"Yes\">"; 
 			}
 			else
 			{

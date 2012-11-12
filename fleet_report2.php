@@ -8,7 +8,10 @@ TD{font-family: Arial; font-size: 10pt;}
 </STYLE>
 </HEAD> 
 <BODY style="background-image:url(bg.jpg);background-color:black;color:white">
-      <form action="fr_form.php" method="post">
+      <form action="fr_form.php" method="post"> 
+	<select name="Duration" onchange="this.form.submit();">
+	<option <?php if ($_POST['Duration'] == '10Days') print 'selected'; ?> value="10Days">10 Days</option>
+	</select>
         <table width="900" border="1" align="center" cellpadding="2" cellspacing="2" bgcolor="black"> 
           <tr>
 			<td colspan="7"><img align="center" src="tracker_rep.jpg" width="600" height="84" alt="tracker" style="display: block;margin-left: auto;margin-right: auto;"></td>

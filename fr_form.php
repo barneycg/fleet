@@ -14,7 +14,7 @@ $type=$_GET["type"];
 // output headers so that the file is downloaded rather than displayed
 header('Content-Type: text/csv; charset=utf-8');
 if ($_GET["name"]!=''){
-	var_dump($_GET['name']);
+	//var_dump($_GET['name']);
 	$header="Content-Disposition: attachment; filename=\"".$_GET["name"]."-".$type.".csv\"";
 }
 else

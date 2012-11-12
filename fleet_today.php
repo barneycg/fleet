@@ -1,6 +1,6 @@
 <HTML> 
 <HEAD> 
-<TITLE>Report on a fleet</TITLE> 
+<TITLE>Todays Fleets</TITLE> 
 <STYLE TYPE="text/css">
 <!--
 TD{font-family: Arial; font-size: 10pt;}
@@ -34,9 +34,15 @@ if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
+$start = new DateTime();
+$start->setTime(0,0,0);
+$end = new DateTime();
+$end->setTime(23,59,59);
+$sstart = $start->format('Y-m-d H:i:s');
+$send =  $end->format('Y-m-d H:i:s');
 $db=mysql_select_db($config['mysql']['db_name'],$con) or die("I Couldn't select your database");
 //include("conn.php");
-$sql = "SELECT fleet_id,fleet_name,timestamp,fleet_start,fleet_end,closed FROM fleets order by fleet_id desc";
+$sql = "SELECT fleet_id,fleet_name,timestamp,fleet_start,fleet_end,closed FROM fleets where fleet_start >= \"$sstart\" and fleet_start <= \"$send\" order by fleet_id desc";
 $result=mysql_query($sql,$con);
 
 //$dbarray = mysql_fetch_array($result);
