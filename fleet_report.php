@@ -29,39 +29,48 @@ Select All   --> </td>
           </tr> 
 
 <?
-$config = parse_ini_file("ft.ini", true);
-$con = mysql_connect($config['mysql']['host'],$config['mysql']['user'],$config['mysql']['password']);
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-$db=mysql_select_db($config['mysql']['db_name'],$con) or die("I Couldn't select your database");
-//include("conn.php");
-$sql = "SELECT fleet_id,fleet_name,timestamp,fleet_start,fleet_end FROM fleets order by fleet_id desc";
-$result=mysql_query($sql,$con);
+//require('/home/sites/lawnalliance.org/forum2/SSI.php');
+//$ssi=$context;
+//global $ssi,$user_info;
+//if (($ssi['user']['is_logged'])&& (in_array(28, $user_info['groups'])))
+//{
+	$config = parse_ini_file("ft.ini", true);
+	$con = mysql_connect($config['mysql']['host'],$config['mysql']['user'],$config['mysql']['password']);
+	if (!$con)
+	{
+		die('Could not connect: ' . mysql_error());
+	}
+	$db=mysql_select_db($config['mysql']['db_name'],$con) or die("I Couldn't select your database");
+	$sql = "SELECT fleet_id,fleet_name,timestamp,fleet_start,fleet_end FROM fleets order by fleet_id desc";
+	$result=mysql_query($sql,$con);
 
-//$dbarray = mysql_fetch_array($result);
-while($row=mysql_fetch_array($result)) { 
-?> 
-          <tr> 
-            <td> 
-            <!--<input name="<? echo $row['fleet_id']; ?>" type="checkbox" class="check"> --> 
-            </td> 
-            <td><? echo $row['fleet_id']; ?></td> 
-            <td><? echo $row['fleet_name']; ?></td>
-            <!-- <td><? echo $row['fleet_start']; ?></td>
-            <td><? echo $row['fleet_end']; ?></td> -->
-            <td><? echo $row['timestamp']; ?></td>
-            <td><a href="<? echo "fr_form.php?id=".$row['fleet_id']."&name=".urlencode($row['fleet_name'])."&type=cc"; ?>">Fetch</a></td> 
-            <td><a href="<? echo "fr_form.php?id=".$row['fleet_id']."&name=".urlencode($row['fleet_name'])."&type=fm"; ?>">Fetch</a></td> 
-          </tr> 
-          <? } ?> 
+	while($row=mysql_fetch_array($result)) { 
+		?> 
+			<tr> 
+			<td> 
+			<!--<input name="<? echo $row['fleet_id']; ?>" type="checkbox" class="check"> --> 
+			</td> 
+			<td><? echo $row['fleet_id']; ?></td> 
+			<td><? echo $row['fleet_name']; ?></td>
+			<!-- <td><? echo $row['fleet_start']; ?></td>
+			<td><? echo $row['fleet_end']; ?></td> -->
+			<td><? echo $row['timestamp']; ?></td>
+			<td><a href="<? echo "fr_form.php?id=".$row['fleet_id']."&name=".urlencode($row['fleet_name'])."&type=cc"; ?>">Fetch</a></td> 
+			<td><a href="<? echo "fr_form.php?id=".$row['fleet_id']."&name=".urlencode($row['fleet_name'])."&type=fm"; ?>">Fetch</a></td> 
+			</tr> 
+			<? } ?> 
 
-        </table> 
+			</table> 
 
-		<!--<button type="button" value="Delete" onclick="goDel();">Delete</button>
-		<div align=right><input type="submit" name="mode" value="Add"></div>-->
+			<!--<button type="button" value="Delete" onclick="goDel();">Delete</button>
+			<div align=right><input type="submit" name="mode" value="Add"></div>-->
 
-    </form>
+			</form>
+<?//}
+//else
+//{
+//	echo "You need to log in on the LAWN forums and be a member of the FC Group";
+//}
+?>
 </BODY>
 </HTML>
